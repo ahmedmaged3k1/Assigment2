@@ -1,0 +1,129 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.example.assigment2.CurrencyActivityViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".CurrencyActivity">
+
+        <TextView
+            android:layout_width="148dp"
+            android:layout_height="28dp"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:text="@string/egyptianpound"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/egyPound"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.114"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </TextView>
+
+        <EditText
+            android:id="@+id/egyPound"
+            style="@style/ThemeOverlay.Material3.AutoCompleteTextView.FilledBox"
+            android:layout_width="357dp"
+            android:layout_height="66dp"
+            android:layout_marginTop="100dp"
+            android:autofillHints=""
+            android:drawableStart="@drawable/ic_baseline_attach_money_24"
+            android:hint="@string/egyptianpound"
+            android:inputType="numberDecimal"
+            android:paddingStart="20dp"
+            android:text="@={user.egyptianPound}"
+            android:textColorHint="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/dollar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.555"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.116"
+            tools:ignore="RtlSymmetry" />
+
+        <TextView
+            android:layout_width="148dp"
+            android:layout_height="28dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:text="@string/dollar"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/dollar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.114"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </TextView>
+
+        <EditText
+            android:id="@+id/dollar"
+            style="@style/ThemeOverlay.Material3.AutoCompleteTextView.FilledBox"
+            android:layout_width="357dp"
+            android:layout_height="66dp"
+            android:autofillHints=""
+            android:drawableStart="@drawable/ic_baseline_attach_money_24"
+            android:hint="@string/dollar"
+            android:inputType="numberDecimal"
+            android:paddingStart="20dp"
+            android:text="@={user.dollar}"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints,RtlSymmetry"
+            tools:layout_editor_absoluteY="252dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/appCompatButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()-> user.convert()}"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="80dp"
+            android:text="@string/convert"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dollar">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:id="@+id/clear"
+            android:text="@string/clear"
+            android:onClick="@{(view)-> user.clear(view)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/appCompatButton"
+            app:layout_constraintTop_toBottomOf="@+id/dollar">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+        <TextView
+            android:layout_width="251dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="68dp"
+            android:gravity="center"
+            android:text="@={user.convertedCurrency}"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.481"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dollar"
+            app:layout_constraintVertical_bias="0.16">
+
+        </TextView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
